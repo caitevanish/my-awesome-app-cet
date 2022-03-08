@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo Hello out there!
+        run: echo Hello out there!
 
   multi-line:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run a multi-line script
-      - run: |
+        run: |
           echo ls
           echo java -version
           echo git --version
