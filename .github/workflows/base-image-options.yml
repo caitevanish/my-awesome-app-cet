@@ -7,17 +7,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  single-command:
+  build:
     runs-on: ubuntu latest
     steps:
       - uses: actions/checkout@v2
+      - name: single-command
         run: echo Hello out there!
 
-  multi-line:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run a multi-line script
+      - name: multi-line
         run: |
           echo ls
           echo java -version
