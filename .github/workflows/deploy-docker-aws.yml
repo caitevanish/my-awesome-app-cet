@@ -2,7 +2,7 @@ name: Deploy Docker-Compose to AWS
 
 env:
   APP_NAME: my-awesome-app-cet
-  AWS_REGION: us-
+  AWS_REGION: us-west-1
   AWS_PLATFORM: Docker
   PIPELINE_ID: $GITHUB_RUN_ID-$GITHUB_RUN_NUMBER
   DATE_STAMP: $(date +%s)
@@ -10,8 +10,8 @@ env:
 on:
   # push:
   #   branches: [main]
-  pull_request:
-    branches: [main]
+  # pull_request:
+  #   branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Checkout source code
       - uses: actions/checkout@v2
-      
+
       - name: AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -29,5 +29,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-        run:
+      - name: Version label
+        run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
 
+      - name: Deploy to Elastic Beanstalk
+        uses: #is this einaregilsson?
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: ${{ env.APP_NAME }}
+          environment_name: Myawesomeappcet-env
+          version_label: ${{ env.aws_region_label }}
+          region: ${{ env.AWS_REGION }}
+          deployment_package: docker-compose.yml
