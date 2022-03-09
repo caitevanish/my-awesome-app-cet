@@ -1,0 +1,17 @@
+name: Docker Dev Image CI
+on: 
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_displatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Build the docker image
+        run: docker-compose -f "docker-compose-dev.yml" up -d --build web
