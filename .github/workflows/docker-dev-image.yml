@@ -21,4 +21,4 @@ jobs:
         run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
 
       - name: Build the docker image
-        run: docker-compose -f "docker-compose-dev.yml" up -d --build web
+        run: docker-compose -f "docker-compose-dev" up -d --build web
