@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout source code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: AWS credentials configuration and version label
         uses: aws-actions/configure-aws-credentials@v1
