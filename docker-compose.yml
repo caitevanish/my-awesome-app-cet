@@ -1,9 +1,10 @@
 version: "3.9"
 
 services:
-  docker-react:
+  web:
     build:
-      context: .
-      dockerfile: Dockerfile
+      container_name: my-awesome-app-cet
+      image: caitevanish/my-awesome-app-cet:latest
     ports:
       - "8080:80"
+    comman: ["node", "App.js"]
