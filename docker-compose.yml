@@ -7,4 +7,4 @@ services:
       image: caitevanish/my-awesome-app-cet:latest
     ports:
       - "8080:8080"
-    comman: ["node", "App.js"]
+    command: ["node", "App.js"]
