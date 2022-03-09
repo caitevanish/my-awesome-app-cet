@@ -33,7 +33,7 @@ jobs:
         run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
 
       - name: Deploy to Elastic Beanstalk
-        uses: #is this einaregilsson?
+        uses: einaregilsson/beanstalk-deploy@v20
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
