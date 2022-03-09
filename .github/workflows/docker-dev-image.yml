@@ -21,4 +21,5 @@ jobs:
         run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
 
       - name: Build the docker image
-        run: docker build . --f Dockerfile 
+        run: docker build . --f Dockerfile --tag caitevanish/my-awesome-app-cet:latest
+        
