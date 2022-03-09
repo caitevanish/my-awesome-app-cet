@@ -1,0 +1,33 @@
+name: Deploy Docker-Compose to AWS
+
+env:
+  APP_NAME: my-awesome-app-cet
+  AWS_REGION: us-
+  AWS_PLATFORM: Docker
+  PIPELINE_ID: $GITHUB_RUN_ID-$GITHUB_RUN_NUMBER
+  DATE_STAMP: $(date +%s)
+
+on:
+  # push:
+  #   branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy_aws:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+      - uses: actions/checkout@v2
+      
+      - name: AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+        run:
+
