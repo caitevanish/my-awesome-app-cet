@@ -16,17 +16,17 @@ jobs:
 
       - name: multi-line
         run: |
-          echo ls
+          ls
           echo
-          echo java -version
+          java -version
           echo
-          echo git --version
+          git --version
           echo
-          echo mvn -v
+          mvn -v
           echo
-          echo gradle -version
+          gradle -version
           echo
-          echo ant -version
+          ant -version
           echo
           echo $ANDROID_SDK_ROOT
           echo
@@ -34,8 +34,8 @@ jobs:
           echo
           echo $RUNNER_WORKSPACE
           echo
-          echo whoami
+          whoami
           echo
-          echo df
+          df
           echo
-          echo env -0 | sort -z | tr '\0' '\n'
+          env -0 | sort -z | tr '\0' '\n'
