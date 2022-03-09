@@ -1,5 +1,9 @@
 name: Docker Dev Image CI
-on: 
+
+env:
+  DATE_STAMP: $(date +%s)
+
+on:
   push:
     branches: [main]
   pull_request:
@@ -12,9 +16,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Env variables
       - run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB
-      
+
       - name: Build the docker image
         run: docker-compose -f "docker-compose-dev.yml" up -d --build web
