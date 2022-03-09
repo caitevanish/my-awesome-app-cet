@@ -30,7 +30,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Version label
-      - run: |
+        run: |
           echo "aws_version_label=${{env.APP_NAME}}-${{env.PIPELINE_ID}}" >> $GITHUB_ENV
           echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
 
