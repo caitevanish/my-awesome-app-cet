@@ -1,12 +1,17 @@
 # Just runs npm start script in development mode.
 
 FROM node:lts-alpine
-WORKDIR /app
-COPY package.json ./
-RUN npm ci 
-COPY ./ ./
 
-FROM nginx:stable-alpine as prod
-COPY --from=build /app/build usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+RUN npm install react-scripts@4.0.3 -g
+
+COPY . ./
+
+EXPOSE 8080
+
+ENV CHOKIDAR_USEPOLLING=true
+
+CMD ["node", "app.js"]
