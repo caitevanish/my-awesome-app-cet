@@ -31,8 +31,8 @@ jobs:
 
       - name: Version label
         run: |
-          echo "aws_version_label=${{env.APP_NAME}}-${{env.PIPELINE_ID}}" >> $GITHUB_ENV
-          echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
+          echo "aws_version_label=${{ env.APP_NAME }}-${{ env.PIPELINE_ID }}" >> $GITHUB_ENV
+          echo "date-stamp=${{ env.DATE_STAMP }}" >> $GITHUB_ENV
 
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
